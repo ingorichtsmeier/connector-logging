@@ -1,10 +1,10 @@
 # Logging Connectors
 
-Camunda Connectors use the apache http client under the hood. To see the request and the response data, you can enable logging for the http client.
+Camunda Connectors use the [Apache http client](https://hc.apache.org/httpcomponents-client-4.5.x/index.html) under the hood. To see the request and the response data, you can enable logging for the http client.
 
 The most interesting log levels are `org.apache.http.headers` and `org.apache.http.wire`. 
 
-an easy way to activate the output is to use logback as your logging output and wire the Camunda logging done by slf4j and the apache http logging done by commons-logging via logback.
+An easy way to activate the output is to use logback as your logging output and wire the Camunda logging done by slf4j and the apache http logging done by commons-logging via logback.
 
 For this you need the jars `lockback.jar` and `jcl-over-slf4j.jar` on your classpath.
 
@@ -49,7 +49,7 @@ This `logback.xml` shows the logging output of the connector on the console.
 
 ## Some pitfalls
 
-If you have `camunda-connect-connectors-all.jar` on your classpath, it includes a shaded implementation of the apache connectors and commons logging classes. They default to jdk14-logging and need a different setup.  (TBD).
+If you have `camunda-connect-connectors-all.jar` on your classpath, it includes a shaded implementation of the Apache http client and commons logging classes. They default to jdk14-logging and need a different setup.  (TBD).
 
 As the `camunda-connect-connectors-all` artifact is a dependency on the `camunda-engine` artifact, you have to exclude it from the dependency:
 
@@ -108,3 +108,6 @@ Add:
 
 Handle Logging with `camunda-connect-connector-all.jar`.
 
+## TODO
+
+Setup logging with the http client under the `connectorjar` package at `camunda-connect-connectors-all`.
